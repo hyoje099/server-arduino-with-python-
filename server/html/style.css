@@ -1,6 +1,32 @@
-head{
-
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#home{
+    background: linear-gradient(-135deg, #FF0000, #9A2EFE);
+    font-size: 500%;
+    color: white;
+    
+}
+#intro{
+    background: linear-gradient(45deg, Violet, Orange);
+    font-size: 1cm;
 }
 body{
-    
+    margin: 0;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+}
+li{
+    padding: 20px;
+}
+.navbar{
+    background: radial-gradient(45deg, Violet, rgb(0, 255, 195));
+    position: fixed;
+    width: 100vw;
 }
