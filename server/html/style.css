@@ -1,4 +1,4 @@
-.container{
+.contaner{
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -10,18 +10,20 @@
     color: white;
     
 }
-#intro{
+#전국{
     background: linear-gradient(45deg, Violet, Orange);
-    font-size: 1cm;
+    font-size: 1vh;
+}
+#우리집온도{
+    background:linear-gradient(rgb(255, 0, 0),rgb(223, 19, 246),rgb(128, 0, 255));
+}
+#우리집습도{
+    background: radial-gradient(rgb(255, 0, 195),rgb(223, 19, 246),rgb(128, 0, 255));
 }
 body{
     margin: 0;
 }
-ul{
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-}
+
 li{
     padding: 20px;
 }
@@ -29,4 +31,9 @@ li{
     background: radial-gradient(45deg, Violet, rgb(0, 255, 195));
     position: fixed;
     width: 100vw;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
 }

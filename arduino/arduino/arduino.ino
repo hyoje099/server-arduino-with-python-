@@ -11,7 +11,9 @@
 #define DHTTYPE DHT11
 DHT dht (pinDHT,DHTTYPE);
 ESP8266WiFiMulti WiFiMulti;
-String serverName = "http://192.168.25.54:8000/temp/";
+String tempserverName = "http://192.168.25.54:8000/temp/";
+String serverName = "http://192.168.25.54:8000/lcd/";
+
 String Humidity = "/Humidity/";
 
 char link;
@@ -37,7 +39,7 @@ void setup() {
 void loop() {
   int h=dht.readHumidity();
   int t=dht.readTemperature();
-  // wait for WiFi connection
+  
   if ((WiFiMulti.run() == WL_CONNECTED)) {
 
     WiFiClient client;
@@ -47,10 +49,27 @@ void loop() {
       HTTPClient http;
 
       Serial.print("[HTTP] begin...\n");
-      
+      if(http.begin(client,severName.cstr())){
+        Serial.print("[lcd]");
+        int Code = http.GET();
+        if(Code > 0){
+          Serial.printf("[HTTP] GET... code: %d\n", Code);
+          if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PEpaylload = http.getString();
+          Serial.println(paylload);
+        }
+        } else {
+        Serial.println(serverPath.c_str());
+        Serial.printf("[lcd] GET... failed, error: %s\n", http.errorToString(Code).c_str());
+      }
+
+      http.end();
+    } else {
+      Serial.println(serverPath.c_str());
+      Serial.printf("[HTTP} Unable to connect\n");
+    }
       delay(100);
-      String serverPath = serverName + t + Humidity + h;
-      if (http.begin(client, serverPath.c_str())) {  // HTTP
+      String serverPathtemp = tempserverName + t + Humidity + h;
+      if (http.begin(client, serverPathtemp.c_str())) {  // HTTP
 
 
         Serial.print("[HTTP] GET...\n");
@@ -80,9 +99,6 @@ void loop() {
     
     
 
+     delay(100);
     
-    
-  }
-
-  delay(100);
 }
